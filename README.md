@@ -2,6 +2,39 @@
 
 A production-grade, decoupled Clinical Decision Support System (CDSS) utilizing Hybrid RAG (Graph + Vector), Multimodal Vision Parsing, and an Adversarial Self-Auditing Loop.
 
+### 🖼️ System Architecture Diagram
+
+```mermaid
+graph TD
+    User([User]) -->|Text Query / Image| Streamlit[Streamlit Frontend]
+    Streamlit -->|REST API POST| FastAPI[FastAPI Backend]
+
+    subgraph "Healthcare Graph-RAG Engine (LangGraph)"
+        FastAPI -->|Invoke State| Orchestrator{LangGraph Orchestrator}
+        
+        Orchestrator -->|Multimodal Input| Vision[Llama-4-Scout Vision Parser]
+        Orchestrator -->|Semantic Check| Gatekeeper[Strict Semantic Gatekeeper]
+        
+        Vision -->|Extracted Entities| Retrieval
+        Gatekeeper -->|Authorized| Retrieval[Hybrid Retrieval: Neo4j + Qdrant]
+        
+        Retrieval --> Generator[Llama-3.3 70B Generator]
+        
+        Generator --> Auditor[GPT-OSS 120B Auditor]
+        
+        Auditor -->|Hallucination Detected| Generator
+        Auditor -->|Verified Safe| FinalAns[Final Clinical Response]
+    end
+
+    FinalAns --> FastAPI
+    FastAPI -->|JSON Response| Streamlit
+    Streamlit -->|Render Answer / Audit Trace| User
+    
+    style Auditor fill:#f96,stroke:#333,stroke-width:2px
+    style Gatekeeper fill:#f66,stroke:#333,stroke-width:2px
+    style Retrieval fill:#69f,stroke:#333,stroke-width:2px
+```
+
 ## 🏗️ Architecture: Decoupled Microservices
 The system is built as a microservices architecture to ensure scalability and maintainability.
 
