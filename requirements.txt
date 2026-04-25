@@ -1,0 +1,15 @@
+streamlit
+langchain-groq
+langgraph
+neo4j
+qdrant-client
+sentence-transformers
+tavily-python
+python-dotenv
+pydantic
+torchvision
+fastapi
+uvicorn
+requests
+pandas
+tabulate
