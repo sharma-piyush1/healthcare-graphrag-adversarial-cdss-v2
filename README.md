@@ -74,9 +74,5 @@ Off-Topic Guardrail: 100% Rejection Rate (0 tokens wasted on LLM generation).
 
 Adversarial Safety: 100% Detection of clinical contradictions (triggered Loop 2).
 
-```bash
-### Tips for your Portfolio:
-* **Video Demo:** Recording a screen-share of the `eval/evaluate_model.py` script running in the terminal alongside the Streamlit UI is highly effective. It shows the "Self-Correction" (Loops) in real-time.
-* **Architecture Diagram:** If you host this on GitHub, adding a simple flow diagram of the "User -> API -> LangGraph -> Auditor -> User" path adds significant clarity.
-```
+
 
