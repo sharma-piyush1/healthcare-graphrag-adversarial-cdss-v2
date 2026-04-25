@@ -2,7 +2,8 @@
 
 A production-grade, decoupled Clinical Decision Support System (CDSS) utilizing Hybrid RAG (Graph + Vector), Multimodal Vision Parsing, and an Adversarial Self-Auditing Loop.
 
-## Streamlit app: https://healthcare-graphrag-adversarial-cdss-v2.streamlit.app/
+## Streamlit app: 
+https://healthcare-graphrag-adversarial-cdss-v2.streamlit.app/
 
 ### 🖼️ System Architecture Diagram
 
