@@ -188,12 +188,3 @@ The script reports whether the returned `source_type` matches its expected strin
 
 A Dockerfile builds a Python 3.10 image and starts the FastAPI application on port 8000. The Compose file defines backend and frontend containers, but it does not define Neo4j or Qdrant. In addition, the frontend URL is hard-coded as `localhost:8000`; inside the frontend container, that points to the frontend container itself rather than the backend service. Therefore, the checked-in Compose configuration does not provide a complete working multi-container stack as written.
 
-## Behavior and limitations present in code
-
-- Classification and image extraction are model-driven; the code does not perform deterministic clinical validation.
-- The audit asks a second model to compare the response to the context. Reaching three generations ends the graph even if the response remains unapproved; the response schema still returns the `is_approved` value.
-- When a web search fails, the graph places an error string in retrieved context and continues to generation.
-- The local knowledge base is a small mock dataset, not a supplied clinical guideline corpus.
-- The Qdrant address and Streamlit API URL are hard-coded to localhost.
-- Query errors are returned as HTTP 500 with a generic API detail. Report-upload processing removes the temporary file in a `finally` block, but the filename is used in the temporary path and the API does not define an upload-size limit.
-- No automated unit-test suite is present; the evaluation script requires running services and live provider credentials.
