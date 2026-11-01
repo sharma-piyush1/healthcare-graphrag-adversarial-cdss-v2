@@ -1,5 +1,7 @@
 # Healthcare Graph-RAG v2
 
+> **Streamlit demo:** [Healthcare Graph-RAG v2](https://healthcare-graphrag-adversarial-cdss-v2.streamlit.app/)
+
 This repository contains a clinical question answering prototype with a FastAPI backend and Streamlit frontend. A LangGraph workflow classifies a query, retrieves context from a local Neo4j/Qdrant knowledge base or Tavily web search, generates a response with Groq-hosted Llama 3.3, and sends the response through a second model for an audit attempt. The API also accepts clinical report images for vision-based extraction before running the query workflow.
 
 > **Important:** This repository is a prototype. Its model-based classification, retrieval, and audit do not establish clinical correctness or make it suitable for clinical use.
